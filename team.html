@@ -2,14 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Team | SecurePay</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team | Fraud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #141414, #1e1e1e);
+      color: #e2e2e2;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 900;
+      color: #e50914;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+    .nav-links li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links li a:hover {
+      color: #e50914;
+    }
+    .auth-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-outline,
+    .btn-filled {
+      padding: 10px 18px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid #e50914;
+      transition: all 0.3s ease;
+    }
+    .btn-outline {
+      background-color: transparent;
+      color: #e50914;
+    }
+    .btn-outline:hover {
+      background-color: #e50914;
+      color: #fff;
+    }
+    .btn-filled {
+      background-color: #e50914;
+      color: #fff;
+    }
+    .btn-filled:hover {
+      background-color: #b0060f;
+    }
+    .about {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      color: #eee;
+    }
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e50914;
+      text-align: center;
+    }
+    .about .team-member {
+      margin: 20px 0;
+      padding: 15px 20px;
+      background-color: #121212;
+      border-left: 4px solid #e50914;
+      border-radius: 10px;
+    }
+    .about .team-member h4 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+    .about .team-member p {
+      margin: 5px 0 0;
+      font-size: 0.95rem;
+      color: #cccccc;
+    }
+    .about .team-member ul {
+      padding-left: 20px;
+      margin-top: 10px;
+      color: #cccccc;
+    }
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding: 30px;
+      font-size: 14px;
+      color: #aaaaaa;
+      background-color: #0f0f0f;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">FRAUD</div>
+    <div class="logo">Fraud</div>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/team">Team</a></li>
@@ -21,7 +133,7 @@
   </nav>
 
   <section class="about">
-    <h2>🚀 Meet the Brains Behind SecurePay</h2>
+    <h2>🚀 Meet the Brains Behind Fraud</h2>
 
     <div class="team-member">
       <h4>👨‍💻 Ayush</h4>
@@ -53,7 +165,7 @@
   </section>
 
   <footer>
-    <p>&copy; All rights reserved.</p>
+    <p>&copy; 2025 Fraud Inc. All rights reserved.</p>
   </footer>
 </body>
 </html>
