@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Detector</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #141414, #1e1e1e);
+      color: #e2e2e2;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 900;
+      color: #e50914;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+    .nav-links li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links li a:hover {
+      color: #e50914;
+    }
+    .auth-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-outline,
+    .btn-filled {
+      padding: 10px 18px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid #e50914;
+      transition: all 0.3s ease;
+    }
+    .btn-outline {
+      background-color: transparent;
+      color: #e50914;
+    }
+    .btn-outline:hover {
+      background-color: #e50914;
+      color: #fff;
+    }
+    .btn-filled {
+      background-color: #e50914;
+      color: #fff;
+    }
+    .btn-filled:hover {
+      background-color: #b0060f;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.75);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .hero p {
+      color: #b3b3b3;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    .fraud-form {
+      display: grid;
+      gap: 16px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .fraud-form input,
+    .fraud-form select,
+    .fraud-form button {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .fraud-form input,
+    .fraud-form select {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #333;
+    }
+    .fraud-form select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20,50 70,100 120,50' fill='none' stroke='white' stroke-width='20'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+    }
+    .fraud-form input:focus,
+    .fraud-form select:focus {
+      outline: none;
+      border-color: #e50914;
+      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5);
+    }
+    .fraud-form button {
+      background-color: #e50914;
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .fraud-form button:hover {
+      background-color: #b0060f;
+    }
+    .datetime-field {
+      display: flex;
+      flex-direction: column;
+    }
+    .datetime-field label {
+      margin-bottom: 6px;
+      color: #e2e2e2;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .datetime-field input[type="text"] {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+    .datetime-field input[type="text"]:focus {
+      border-color: #e50914;
+      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
+    }
+    .result-card {
+      margin-top: 32px;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(6px);
+      color: #fff;
+    }
+    .result-card.safe {
+      background-color: rgba(20, 100, 20, 0.8);
+      color: #70ffb0;
+    }
+    .result-card.fraud {
+      background-color: rgba(180, 0, 0, 0.8);
+      color: #ff8c8c;
+    }
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding: 30px;
+      font-size: 14px;
+      color: #aaaaaa;
+      background-color: #0f0f0f;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">FRAUD</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/team">Team</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <button class="btn-outline">Login</button>
+      <button class="btn-filled">Sign Up</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Fraud Detection</h1>
+    <p>Analyze suspicious transactions instantly with our ML-powered SecurePay engine.</p>
+
+    <form class="fraud-form" method="POST" action="/predict">
+      <input type="text" name="amt" placeholder="💰 Amount (e.g. 999.99)" required />
+
+      <select name="category" required>
+        <option value="">🏷️ Select Category</option>
+        <option value="shopping_net">Shopping (Online)</option>
+        <option value="shopping_pos">Shopping (In-Store)</option>
+        <option value="gas_transport">Gas & Transport</option>
+        <option value="grocery_net">Groceries (Online)</option>
+        <option value="grocery_pos">Groceries (In-Store)</option>
+        <option value="food_dining">Food & Dining</option>
+        <option value="travel">Travel</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="misc_net">Misc (Online)</option>
+        <option value="misc_pos">Misc (In-Store)</option>
+        <option value="health_fitness">Health & Fitness</option>
+        <option value="kids_pets">Kids & Pets</option>
+        <option value="home">Home</option>
+        <option value="personal_care">Personal Care</option>
+        <option value="education">Education</option>
+      </select>
+
+      <div class="datetime-field">
+        <label for="datetime">🕒 Transaction Date & Time</label>
+        <input type="text" id="datetime" name="datetime" placeholder="Pick Date & Time" required />
+      </div>
+
+      <input type="text" name="city_pop" placeholder="🏙️ City Population (e.g. 420)" required />
+      <input type="text" name="merch_lat" placeholder="📍 Merchant Latitude (e.g. 36.77)" required />
+      <input type="text" name="merch_long" placeholder="📍 Merchant Longitude (e.g. -119.41)" required />
+
+      <button type="submit">🔍 Detect Fraud</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result-card {{ 'fraud' if 'FRAUD' in prediction else 'safe' }}">
+      <p><strong>Result:</strong> {{ prediction }}</p>
+    </div>
+    {% endif %}
+  </section>
+
+  <footer>
+    <p>&copy; Built with ❤️ by Aryan, Mehul, and Ayush.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#datetime", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      altInput: true,
+      altFormat: "F j, Y - h:i K"
+    });
+  </script>
+</body>
+</html>
